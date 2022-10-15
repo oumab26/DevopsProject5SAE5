@@ -53,6 +53,11 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>3.0.0</version>
 		</dependency>
+		<dependency>
+      <groupId>org.sonarsource.sonarqube</groupId>
+      <artifactId>sonar-ws</artifactId>
+      <version>3.1.0</version>
+    </dependency>
 
 	</dependencies>
         
