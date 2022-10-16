@@ -53,21 +53,32 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>3.0.0</version>
 		</dependency>
-		
+		<dependency>
+		    <groupId>org.codehaus.mojo</groupId>
+		    <artifactId>sonar-maven-plugin</artifactId>
+		    <version>3.4.0.905</version>
+		    <type>pom</type>
+		</dependency>
 
 	</dependencies>
-         <profiles>
-        <profile>
-            <id>sonar</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <!-- Enter your SonarQube instance URL here -->
-                <sonar.host.url>http://localhost:9000</sonar.host.url>
-            </properties>
-        </profile>
-     </profiles>
+		<profiles>
+			<profile>
+				<id>sonar</id>
+				<activation>
+				<activeByDefault>true</activeByDefault>
+				</activation>
+				<properties>
+				<!-- Optional URL to server. Default value is http://localhost:9000 -->
+				<sonar.host.url> http://192.168.2.14:9000 </sonar.host.url>
+				<--Uncomment below few lines if you are using external databases(Oracle/DB2/Mysql) -->
+				<!--  <sonar.jdbc.url>your database url</sonar.jdbc.url>
+				<sonar.jdbc.driver>your DB driver</sonar.jdbc.driver>
+				<sonar.jdbc.username>DB username</sonar.jdbc.username>
+				<sonar.jdbc.password>DB password</sonar.jdbc.password>        -->              
+
+				</properties>
+			</profile>
+		</profiles>
 	
 	<build>
 		<plugins>
