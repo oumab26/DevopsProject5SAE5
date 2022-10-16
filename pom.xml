@@ -56,7 +56,18 @@
 		
 
 	</dependencies>
-        
+         <profiles>
+        <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!-- Enter your SonarQube instance URL here -->
+                <sonar.host.url>http://localhost:9000</sonar.host.url>
+            </properties>
+        </profile>
+     </profiles>
 	
 	<build>
 		<plugins>
