@@ -70,7 +70,6 @@
 				<properties>
 				<!-- Optional URL to server. Default value is http://localhost:9000 -->
 				<sonar.host.url> http://192.168.2.14:9000 </sonar.host.url>
-				<--Uncomment below few lines if you are using external databases(Oracle/DB2/Mysql) -->
 				<!--  <sonar.jdbc.url>your database url</sonar.jdbc.url>
 				<sonar.jdbc.driver>your DB driver</sonar.jdbc.driver>
 				<sonar.jdbc.username>DB username</sonar.jdbc.username>
