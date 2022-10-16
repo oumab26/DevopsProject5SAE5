@@ -61,23 +61,7 @@
 		</dependency>
 
 	</dependencies>
-		<profiles>
-			<profile>
-				<id>sonar</id>
-				<activation>
-				<activeByDefault>true</activeByDefault>
-				</activation>
-				<properties>
-				<!-- Optional URL to server. Default value is http://localhost:9000 -->
-				<sonar.host.url> http://192.168.2.14:9000 </sonar.host.url>
-				<!--  <sonar.jdbc.url>your database url</sonar.jdbc.url>
-				<sonar.jdbc.driver>your DB driver</sonar.jdbc.driver>
-				<sonar.jdbc.username>DB username</sonar.jdbc.username>
-				<sonar.jdbc.password>DB password</sonar.jdbc.password>        -->              
-
-				</properties>
-			</profile>
-		</profiles>
+	
 	
 	<build>
 		<plugins>
