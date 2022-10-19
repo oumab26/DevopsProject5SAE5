@@ -18,12 +18,12 @@ import tn.esprit.rh.achat.services.IFactureService;
      
      @InjectMocks
      IFactureService factureService;
-   
+   /*
      @Test
           public void shouldDoSomething() {
     	 factureService.retrieveAllFactures();
           }
-    		 
+    		 */
     		 
     		 
     		 
