@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -54,15 +54,33 @@
 			<version>3.0.0</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.codehaus.mojo</groupId>
-		    <artifactId>sonar-maven-plugin</artifactId>
-		    <version>3.4.0.905</version>
-		    <type>pom</type>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>sonar-maven-plugin</artifactId>
+			<version>3.4.0.905</version>
+			<type>pom</type>
 		</dependency>
-
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>RELEASE</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
 	</dependencies>
-	
-	
+
+
 	<build>
 		<plugins>
 			<plugin>
@@ -77,13 +95,13 @@
 					</excludes>
 				</configuration>
 			</plugin>
-		  
-			
-			
-			
+
+
+
+
 		</plugins>
 	</build>
-	
+
 
 
 </project>
