@@ -29,47 +29,38 @@ class ProduitServiceImplTest {
     ProduitRepository produitRepository ;
 
     @Test
-    public void testGetallProducts() {
+    public void testGetallProducts(){
         when(produitRepository. findAll()).thenReturn(Stream
                 .of(new Produit(), new Produit()).collect(Collectors.toList()));
         assertEquals(2, produitService.retrieveAllProduits().size());
-
     }
 
     @Test
-    public void AddProduitTest() {
+    public void AddProduitTest(){
         Produit prod = new Produit();
         when(produitRepository.save(prod)).thenReturn(prod);
         assertEquals(prod, produitService.addProduit(prod));
     }
 
     @Test
-    public void deleteUserTest() {
+    public void deleteUserTest(){
         Produit prod = new Produit();
-       // Produit prod1 = new Produit();
         produitService.deleteProduit(prod.getIdProduit());
-       // produitService.deleteProduit(prod1.getIdProduit());
         verify(produitRepository, times(1)).deleteById(prod.getIdProduit());
-
     }
 
     @Test
-    public void testUpdateProduct() {
+    public void testUpdateProduct(){
         Produit prod = new Produit();
         when(produitRepository.save(prod)).thenReturn(prod);
         assertEquals(prod, produitService.updateProduit(prod));
     }
 
     @Test
-    public void testGetProduct() {
-
+    public void testGetProduct(){
         Produit prod = new Produit();
-       // Produit prod1 = new Produit();
         when(produitRepository.findById(prod.getIdProduit())).thenReturn(Optional.of(prod));
         assertEquals(prod, produitService.retrieveProduit(prod.getIdProduit()));
-
-
-
     }
 
 
