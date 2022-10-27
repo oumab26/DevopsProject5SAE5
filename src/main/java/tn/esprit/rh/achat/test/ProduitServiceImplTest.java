@@ -36,7 +36,7 @@ class ProduitServiceImplTest {
     }
 
     @Test
-    public void AddProduitTest(){
+    public void addProduitTest(){
         Produit prod = new Produit();
         when(produitRepository.save(prod)).thenReturn(prod);
         assertEquals(prod, produitService.addProduit(prod));
