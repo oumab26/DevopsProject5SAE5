@@ -1,10 +1,10 @@
 package tn.esprit.rh.achat.test;
 
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import tn.esprit.rh.achat.entities.Produit;
 import org.junit.jupiter.api.Test;
 import tn.esprit.rh.achat.repositories.ProduitRepository;
@@ -18,14 +18,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+
+@ExtendWith(MockitoExtension.class)
 class ProduitServiceImplTest {
 
-    @Autowired
+    @InjectMocks
     ProduitServiceImpl  produitService ;
 
-    @MockBean
+    @Mock
     ProduitRepository produitRepository ;
 
     @Test
