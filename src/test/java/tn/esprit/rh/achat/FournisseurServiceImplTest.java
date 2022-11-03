@@ -45,6 +45,7 @@ import static org.mockito.Mockito.*;
         Fournisseur four = new Fournisseur();
         when(fournisseurRepository.save(four)).thenReturn(four);
         assertEquals(four, fournisseurService.addFournisseur(four));
+        System.out.println("ECCHIUZZ");
     }
 
     @Test
