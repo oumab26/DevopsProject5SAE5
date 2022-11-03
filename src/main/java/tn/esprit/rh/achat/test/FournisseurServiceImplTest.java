@@ -41,7 +41,7 @@ import static org.mockito.Mockito.*;
     }
 
     @Test
-    public void AddFournisseurTest(){
+    public void addFournisseurTest(){
         Fournisseur four = new Fournisseur();
         when(fournisseurRepository.save(four)).thenReturn(four);
         assertEquals(four, fournisseurService.addFournisseur(four));
