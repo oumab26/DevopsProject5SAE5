@@ -1,35 +1,30 @@
 package tn.esprit.rh.achat.test;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.mock.mockito.MockBean;
-
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-
-import org.springframework.test.context.junit4.SpringRunner;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import tn.esprit.rh.achat.entities.Operateur;
 import tn.esprit.rh.achat.repositories.OperateurRepository;
 import tn.esprit.rh.achat.services.OperateurServiceImpl;
-
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+
+@ExtendWith(MockitoExtension.class)
 class OperateurServiceImplTest {
 
 
-    @Autowired
+    @InjectMocks
     private OperateurServiceImpl operateurService;
 
 
-    @MockBean
+    @Mock
     private OperateurRepository operateurRepository;
 
     @Test
