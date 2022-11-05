@@ -95,6 +95,12 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>3.0.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>sonar-maven-plugin</artifactId>
+			<version>3.4.0.905</version>
+			<type>pom</type>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -112,9 +118,40 @@
 			</plugin>
 			
 			
-			<!-- JaCoCo code coverage plugin -->
-			
-			<!-- JaCoCo code coverage plugin -->
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.8</version>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>post-unit-test</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<dataFile>target/jacoco.exec</dataFile>
+							<!-- Sets the output directory for the code coverage report. -->
+							<outputDirectory>target/jacoco-ut</outputDirectory>
+						</configuration>
+					</execution>
+
+				</executions>
+
+			</plugin>
 			<plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-resources-plugin</artifactId>
