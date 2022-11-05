@@ -33,7 +33,6 @@ public class SecteurServiceImplTest {
 
 	    @Mock
 	    private SecteurActiviteRepository SecteurRepository;
-	 
 	    
 	    @Test
 	     void RetrieveSecteurActiviteTest() {
