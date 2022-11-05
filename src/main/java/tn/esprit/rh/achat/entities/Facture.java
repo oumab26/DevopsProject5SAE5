@@ -44,5 +44,17 @@ public class Facture implements Serializable {
     @JsonIgnore
     private Set<Reglement> reglements;
 
-	
+
+
+
+	public Facture(float montantRemise, float montantFacture, Date dateCreationFacture, Date dateDerniereModificationFacture, Boolean archivee, Set<DetailFacture> detailsFacture, Fournisseur fournisseur, Set<Reglement> reglements) {
+		this.montantRemise = montantRemise;
+		this.montantFacture = montantFacture;
+		this.dateCreationFacture = dateCreationFacture;
+		this.dateDerniereModificationFacture = dateDerniereModificationFacture;
+		this.archivee = archivee;
+		this.detailsFacture = detailsFacture;
+		this.fournisseur = fournisseur;
+		this.reglements = reglements;
+	}
 }
