@@ -17,7 +17,7 @@ services:
 
 
   springapp:
-    image: oumaimabalti/achat
+    image: oumaima26/achat
     container_name: springapp
     restart: on-failure
     environment:
@@ -32,7 +32,7 @@ services:
       
       
   angularapp:
-   image: oumaimabalti/achat-angular
+   image: oumaima26/achat-angular
    container_name: angularapp
    restart: on-failure
    ports:
