@@ -9,9 +9,10 @@ services:
     volumes:
       - /home/mysql/data:/var/lib/mysql
   spring_app:
-    image: fakhriab/achatrepo:${TAG}
+    image: fakhriab/achatrepo:latest
     container_name: achatproject
     restart: on-failure
+    env_file: ./.env
     ports:
       - 8089:8089
     depends_on:
