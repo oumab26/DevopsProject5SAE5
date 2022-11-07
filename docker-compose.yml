@@ -9,6 +9,7 @@ services:
     volumes:
       - /home/mysql/data:/var/lib/mysql
   spring_app:
+    env_file: ./.env
     image: medwael7/achatrepo:${TAG}
     container_name: achatproject
     restart: on-failure
