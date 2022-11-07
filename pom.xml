@@ -58,7 +58,7 @@
 	<distributionManagement>
 		<repository>
 			<id>deploymentrepo</id>
-			<url>http://192.168.48.125:8081/repository/maven-releases/</url>
+			<url>http://192.168.48.125:8081/repository/maven-nexus-repo/</url>
 		</repository>
 	</distributionManagement>
 
