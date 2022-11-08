@@ -11,7 +11,7 @@ services:
     ports:
       - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
-      - /home/mysql/data:/var/lib/mysql
+      - db:/var/lib/mysql
   spring_app:
     image: fakhriab/achatrepo
     container_name: achatproject
