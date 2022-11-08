@@ -12,7 +12,7 @@ services:
     volumes:
       - db:/var/lib/mysql
   app:
-    image: wissembettaieb/achatrepo:latest
+    image: wissembettaieb/achatrepo:wissembettaieb
     depends_on:
       - mysqldb
     restart: on-failure
