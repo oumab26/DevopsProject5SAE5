@@ -4,15 +4,32 @@ services:
     container_name: mysqldb
     image: mysql:latest
     restart: unless-stopped
+    env_file: ./.env
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      - MYSQL_ROOT_PASSWORD=$MYSQLDB_ROOT_PASSWORD
+      - MYSQL_DATABASE=$MYSQLDB_DATABASE
+    ports:
+      - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
       - /home/mysql/data:/var/lib/mysql
   spring_app:
     image: fakhriab/achatrepo
     container_name: achatproject
     restart: on-failure
+    env_file: ./.env
     ports:
-      - 8089:8089
-    depends_on:
-      - mysqldb
+      - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
+    environment:
+      SPRING_APPLICATION_JSON: '{
+         "spring.datasource.url"  : "jdbc:mysql://mysqldb:$MYSQLDB_DOCKER_PORT/$MYSQLDB_DATABASE?useSSL=false",
+         "spring.datasource.username" : "$MYSQLDB_USER",
+         "spring.datasource.password" : "$MYSQLDB_ROOT_PASSWORD",
+         "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
+         "spring.jpa.hibernate.ddl-auto" : "update"
+       }'
+    volumes:
+      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
+  volumes:
+    db:
