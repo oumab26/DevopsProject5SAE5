@@ -19,6 +19,8 @@ services:
     env_file: ./.env
     ports:
       - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
+    depends_on:
+      - mysqldb
     environment:
       SPRING_APPLICATION_JSON: '{
          "spring.datasource.url"  : "jdbc:mysql://mysqldb:$MYSQLDB_DOCKER_PORT/$MYSQLDB_DATABASE?useSSL=false",
@@ -27,5 +29,4 @@ services:
          "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
          "spring.jpa.hibernate.ddl-auto" : "update"
        }'
-   depends_on:
-    - mysqldb
+
