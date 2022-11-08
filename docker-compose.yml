@@ -9,7 +9,7 @@ services:
     volumes:
       - /home/mysql/data:/var/lib/mysql
   spring_app:
-    image: fakhriab/achatrepo:latest
+    image: fakhriab/achatrepo
     container_name: achatproject
     restart: on-failure
     ports:
