@@ -12,6 +12,7 @@ services:
     volumes:
       - db:/var/lib/mysql
   app:
+    image: wissembettaieb/achatrepo:wess
     depends_on:
       - mysqldb
     build: .
