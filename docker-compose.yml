@@ -12,9 +12,9 @@ services:
     volumes:
       - db:/var/lib/mysql
   app:
-    image: wissembettaieb/achatrepo:achatrepo
     depends_on:
       - mysqldb
+
     restart: on-failure
     ports:
       - "8089:8089"
