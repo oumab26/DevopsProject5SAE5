@@ -14,8 +14,7 @@ services:
   app:
     depends_on:
       - mysqldb
-     build: .
-
+    build: .
     restart: on-failure
     ports:
       - "8089:8089"
