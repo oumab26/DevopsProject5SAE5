@@ -10,7 +10,7 @@ services:
       - 3306:3306
     environment:
       MYSQL_DATABASE: achatdb
-      MYSQL_ALLOW_EMPTY_PASSWORD: 
+      MYSQL_ALLOW_EMPTY_PASSWORD:
     volumes:
       - mysqldb:/var/lib/mysql:rw
 
