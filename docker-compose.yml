@@ -28,7 +28,16 @@ services:
       - 8089:8089
     depends_on:
       - mysqldb
-    
+  
+     
+  angularapp:
+   image: oumaima26/achat-angular
+   container_name: angularapp
+   restart: on-failure
+   ports:
+     - 4200:80
+   depends_on:
+     - springapp 
       
  
 
