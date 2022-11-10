@@ -2,36 +2,34 @@ version: "3"
 
 services:
   mysqldb:
-    container_name: mysqldb
     image: mysql:latest
-    user: root
     restart: unless-stopped
-    ports:
-      - 3306:3306
     environment:
-      MYSQL_DATABASE: achatdb
-      MYSQL_ALLOW_EMPTY_PASSWORD:
-    volumes:
-      - mysqldb:/var/lib/mysql:rw
-
-
-
-  springapp:
-    image: fakhriab/achatrepo
-    container_name: achatproject
-    restart: on-failure
-    environment:
-      -SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/achatdb?useUnicode=yes&&useJDBCCompliantTimezoneShift=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
-    volumes:
-      - .m2:/root/.m2
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_DATABASE=achatdb
     ports:
-      - 8089:8089
+      - "3306:3306"
+    volumes:
+      - db:/var/lib/mysql
+  app:
     depends_on:
       - mysqldb
+    image: 'fakhriab/achatrepo:latest'
+    build:
+      context: .
 
-
-
-
-
+    restart: on-failure
+    ports:
+      - "8089:8089"
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.datasource.url"  : "jdbc:mysql://mysqldb:3306/test?useSSL=false",
+        "spring.datasource.username" : "root",
+        "spring.datasource.password" : "",
+        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
+        "spring.jpa.hibernate.ddl-auto" : "update"
+      }'
+    stdin_open: true
+    tty: true
 volumes:
-  mysqldb:
+  db:
