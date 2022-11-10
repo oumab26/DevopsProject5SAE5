@@ -53,7 +53,23 @@
 			<artifactId>springfox-swagger-ui</artifactId>
 			<version>3.0.0</version>
 		</dependency>
-
+		<dependency>
+		    <groupId> org.apache.cassandra</groupId>
+		    <artifactId>cassandra-all</artifactId>
+		    <version>0.8.1</version>
+		
+		    <exclusions>
+		      <exclusion> 
+		        <groupId>org.slf4j</groupId>
+		        <artifactId>slf4j-log4j12</artifactId>
+		      </exclusion>
+		      <exclusion> 
+		        <groupId>log4j</groupId>
+		        <artifactId>log4j</artifactId>
+		      </exclusion>
+		    </exclusions> 
+		
+		  </dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -76,6 +92,10 @@
 			<artifactId>mockito-core</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-junit-jupiter</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.codehaus.mojo</groupId>
 			<artifactId>sonar-maven-plugin</artifactId>
 			<version>3.4.0.905</version>
@@ -90,6 +110,8 @@
 
 
 	</dependencies>
+
+	
 
 	<build>
 		<plugins>
@@ -138,6 +160,12 @@
 
 				</executions>
 
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+			     <version>3.1.0</version>
 			</plugin>
 
 		</plugins>
