@@ -1,19 +1,31 @@
-version: "3"
+version: "3.4"
+
 services:
   mysqldb:
     container_name: mysqldb
     image: mysql:latest
+    user: root
     restart: unless-stopped
+    ports:
+      - 3308:3306
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: achatdb
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
     volumes:
-      - /home/mysql/data:/var/lib/mysql
-  spring_app:
-    env_file: ./.env
-    image: medwael7/achatrepo:${TAG}
-    container_name: achatproject
+      - mysqldb:/var/lib/mysql:rw
+
+  springapp:
+    image: medwael7/achatrepo
+    container_name: springapp
     restart: on-failure
+    environment:
+      -SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/achatdb?useUnicode=yes&&useJDBCCompliantTimezoneShift=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
+    volumes:
+      - .m2:/root/.m2
     ports:
       - 8089:8089
     depends_on:
       - mysqldb
+
+volumes:
+  mysqldb:
