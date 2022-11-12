@@ -36,15 +36,5 @@ services:
     tty: true
     volumes:
       - db
-      
-  angularapp:
-     image: oumaima26/achat-angular:latest
-     container_name: angularapp
-     restart: on-failure
-     ports:
-       - 4200:80
-     depends_on:
-       - springapp 
-     volumes:
-       - db
+
   
