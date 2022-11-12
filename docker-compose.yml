@@ -3,6 +3,7 @@ version: "3"
 services:
   mysqldb:
     image: mysql:5.7
+    container_name: mysqldb
     restart: unless-stopped
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
@@ -11,10 +12,11 @@ services:
       - "4000:3306"
     volumes:
       - db:/var/lib/mysql
-  app:
+  springapp:
     depends_on:
       - mysqldb
     image: 'oumaima26/achat:latest'
+    container_name: springapp
     build:
       context: .
 
@@ -31,5 +33,18 @@ services:
         }'
     stdin_open: true
     tty: true
-volumes:
-  db:
+    volumes:
+        - db
+  
+  angularapp:
+   image: oumaima26/achat-angular:latest
+   container_name: angularapp
+   restart: on-failure
+   ports:
+     - 4200:80
+   depends_on:
+     - springapp
+     
+   volumes:
+        - db
+
