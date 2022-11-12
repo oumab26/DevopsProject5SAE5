@@ -4,13 +4,15 @@ services:
   mysqldb:
     image: mysql:latest
     restart: unless-stopped
+    volumes:
+      - db:/var/lib/mysql
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
       - MYSQL_DATABASE=achatdb
     ports:
       - "3306:3306"
-    volumes:
-      - db:/var/lib/mysql
+    
+      
   app:
     depends_on:
       - mysqldb
