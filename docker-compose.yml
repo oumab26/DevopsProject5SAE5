@@ -11,7 +11,8 @@ services:
     ports:
       - "4000:3306"
     volumes:
-      - db:/var/lib/mysql
+      - mysqldb:/var/lib/mysql:rw
+      
   springapp:
     depends_on:
       - mysqldb
