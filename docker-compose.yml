@@ -3,21 +3,18 @@ version: "3"
 services:
   mysqldb:
     image: mysql:5.7
-    container_name: mysqldb
     restart: unless-stopped
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
-      - MYSQL_DATABASE=test
+      - MYSQL_DATABASE=bd
     ports:
       - "4000:3306"
     volumes:
-      - mysqldb:/var/lib/mysql:rw
-      
-  springapp:
+      - db:/var/lib/mysql
+  app:
     depends_on:
       - mysqldb
     image: 'oumaima26/achat:latest'
-    container_name: springapp
     build:
       context: .
 
@@ -26,26 +23,13 @@ services:
       - "8089:8089"
     environment:
       SPRING_APPLICATION_JSON: '{
-        "spring.datasource.url"  : "jdbc:mysql://mysqldb:3306/test?useSSL=false",
+        "spring.datasource.url"  : "jdbc:mysql://mysqldb:3306/bd?useSSL=false",
         "spring.datasource.username" : "root",
         "spring.datasource.password" : "",
         "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
         "spring.jpa.hibernate.ddl-auto" : "update"
-        }'
+       }'
     stdin_open: true
     tty: true
-    volumes:
-        - db
-  
-  angularapp:
-   image: oumaima26/achat-angular:latest
-   container_name: angularapp
-   restart: on-failure
-   ports:
-     - 4200:80
-   depends_on:
-     - springapp
-     
-   volumes:
-        - db
-
+volumes:
+  db:
