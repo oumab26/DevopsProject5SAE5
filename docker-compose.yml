@@ -10,9 +10,9 @@ services:
       - 3308:3306
     environment:
       MYSQL_DATABASE: achatdb
-      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      MYSQL_ALLOW_EMPTY_PASSWORD: achatdb
     volumes:
-      - mysqldb:/var/lib/mysql:rw
+      - mysqldbb:/var/lib/mysql
     
 
 
@@ -22,9 +22,9 @@ services:
     restart: on-failure
     environment:
       -SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/achatdb?useUnicode=yes&&useJDBCCompliantTimezoneShift=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
-    volumes:
-      - .m2:/root/.m2
     ports:
       - 8089:8089
     depends_on:
       - mysqldb
+    volumes:
+      - mysqldbb
