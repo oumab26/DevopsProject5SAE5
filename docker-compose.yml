@@ -31,5 +31,12 @@ services:
        }'
     stdin_open: true
     tty: true
+  angularpart:
+    depends_on:
+      - app
+    container_name: achat-frontend
+    image: baltioumaima26/achat-angular
+    ports:
+      - '4200:80'
 volumes:
   db:
