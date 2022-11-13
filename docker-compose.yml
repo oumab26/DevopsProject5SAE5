@@ -35,7 +35,7 @@ services:
     depends_on:
       - app
     container_name: achat-frontend
-    image: baltioumaima26/achat-angular:latest
+    image: oumaima26/achat-angular:latest
     ports:
       - '4200:80'
 volumes:
