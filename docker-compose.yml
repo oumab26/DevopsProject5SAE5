@@ -14,7 +14,7 @@ services:
   app:
     depends_on:
       - mysqldb
-    image: oumaima26/achat/latest
+    image: 'oumaima26/achat:latest'
     build:
       context: .
 
