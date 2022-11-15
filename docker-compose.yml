@@ -2,11 +2,11 @@ version: "3"
 
 services:
   mysqldb:
-    image: mysql:latest
+    image: mysql:5.7
     restart: unless-stopped
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
-      - MYSQL_DATABASE=achat
+      - MYSQL_DATABASE=achatdb
     ports:
       - "3306:3306"
     volumes:
