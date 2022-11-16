@@ -2,7 +2,7 @@ version: "3"
 
 services:
   mysqldb:
-    image: mysql:latest
+    image: mysql:5.7
     restart: unless-stopped
     environment:
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
@@ -14,7 +14,7 @@ services:
   app:
     depends_on:
       - mysqldb
-    image: 'medwael7/achatrepo:latest'
+    image: 'fakhriab/achatrepo:latest'
     build:
       context: .
 
