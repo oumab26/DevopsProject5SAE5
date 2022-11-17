@@ -14,7 +14,7 @@ services:
   app:
     depends_on:
       - mysqldb
-    image: 'monabeldi/achatrepo:latest'
+    image: 'monabeldi/achat:latest'
     build:
       context: .
 
